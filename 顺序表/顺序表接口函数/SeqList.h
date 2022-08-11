@@ -15,7 +15,7 @@ void SeqListPushBack(SL* ps, SeqDatatype* x);
 void SeqListPopBack(SL* ps);
 void SeqListPushFront(SL* ps, SeqDatatype* x);
 void SeqListPopFront(SL* ps);
-void SeqListFind(SL* ps, SeqDatatype* x);
+int SeqListFind(SL* ps, SeqDatatype* x);
 void SeqListInsert(SL* ps, int pos, SeqDatatype* x);
 void SeqListErase(SL* ps, int pos);
 void SeqListDestroy(SL* ps);
