@@ -1,0 +1,8 @@
+﻿  Contact.c
+D:\c\2022\contact\Contact.c(69,23): warning C4013: “FindContact”未定义；假设外部返回 int
+D:\c\2022\contact\Contact.c(93,41): warning C4047: “函数”:“const char *”与“char”的间接级别不同
+D:\c\2022\contact\Contact.c(93,37): warning C4024: “strcmp”: 形参和实参 2 的类型不同
+D:\c\2022\contact\Contact.c(144,7): warning C4013: “qsort”未定义；假设外部返回 int
+  test.c
+  正在生成代码...
+D:\c\2022\contact\Contact.c(113): error C4700: 使用了未初始化的局部变量“name”
