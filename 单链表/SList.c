@@ -4,7 +4,7 @@ SLTNode* BuyListNode(SLTDataType x)
 	SLTNode* newnode = (SLTNode*)malloc(sizeof(SLTNode));
 	if (newnode == NULL)
 	{
-		printf("%s\n", "内存分配不成功");
+		printf("%s\n", "malloc fail");
 		exit(-1);
 	}
 	newnode->data = x;
@@ -55,12 +55,8 @@ void SListPushFront(SLTNode** pphead, SLTDataType x)
 }
 void SListPopBack(SLTNode** pphead)
 {
-	assert(pphead);
-	if (*pphead == NULL)
-	{
-		return;
-	}
-	//assert(*pphead);
+	assert(*pphead);
+	//只有一个节点
 	if ((*pphead)->next == NULL)
 	{
 		free(*pphead);
@@ -70,8 +66,7 @@ void SListPopBack(SLTNode** pphead)
 	{
 		SLTNode* tail = *pphead;
 		SLTNode* prev = NULL;
-		//while (tail->next!= NULL)
-		while(tail->next)
+		while (tail->next!= NULL)
 		{
 			prev = tail;
 			tail = tail->next;
