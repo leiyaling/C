@@ -26,6 +26,7 @@ void my_sort(int arr[], int size)
 //void BubbleSort(int array[], int size)
 //{
 //    int i = 0;
+//    int flag=0;
 //    // 外层循环控制冒泡排序的趟数
 //    // size-1表示：最后一趟区间中只剩余1个元素，该趟冒泡可以省略
 //    for (i = 0; i < size - 1; ++i)
@@ -35,10 +36,13 @@ void my_sort(int arr[], int size)
 //        {
 //            if (array[j - 1] > array[j])
 //            {
+//		flag=1;
 //                int temp = array[j - 1];
 //                array[j - 1] = array[j];
 //                array[j] = temp;
 //            }
+//	if(flag==0)//第一次没有进入交换，代表数组是有序的，跳出循环
+//	break;
 //        }
 //    }
 //    for (i = 0; i < size; i++)
