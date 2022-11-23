@@ -6,6 +6,7 @@ void QueueInit(Queue* q)
 	assert(q);
 	q->_front = NULL;
 	q->_rear = NULL;
+	q->size =0;
 }
 //打印队列
 void QueuePrint(Queue* q)
@@ -22,6 +23,7 @@ void QueuePrint(Queue* q)
 // 队尾入队列 
 void QueuePush(Queue* q, QDataType data)
 {
+	assert(q);
 	QNode* newnode = (QNode*)malloc(sizeof(QNode));
 	if (newnode == NULL)
 	{
@@ -30,7 +32,7 @@ void QueuePush(Queue* q, QDataType data)
 	}
 	newnode->_data = data;
 	newnode->_next = NULL;
-	if (q->_front == NULL)
+	if (q->_rear == NULL)
 	{
 		q->_front = q->_rear = newnode;
 	}
@@ -39,19 +41,28 @@ void QueuePush(Queue* q, QDataType data)
 		q->_rear->_next = newnode;
 		q->_rear = newnode;
 	}
+	
+	q->_size++;
 }
 // 队头出队列 
 void QueuePop(Queue* q)
 {
 	assert(q);
 	assert(!QueueEmpty(q));
-	QNode* next = q->_front->_next;
-	free(q->_front);
-	q->_front = next;
-	if (q->_front == NULL)
+	if (pq->_front->next == NULL)
 	{
-		q->_rear = NULL;
+		free(pq->_front);
+		pq->_front = pq->_rear = NULL;
 	}
+	else
+	{
+		QNode* del = pq->_front;
+		pq->_front = pq->_front->next;
+
+		free(del);
+	}
+
+	pq->size--;
 }
 // 获取队列头部元素 
 QDataType QueueFront(Queue* q)
@@ -71,20 +82,21 @@ QDataType QueueBack(Queue* q)
 int QueueSize(Queue* q)
 {	
 	assert(q);
-	QNode* cur = q->_front;
+	/*QNode* cur = q->_front;
 	int size = 0;
 	while (cur)
 	{
 		size++;
 		cur = cur->_next;
 	}
-	return size;
+	return size;*/
+	return q->size
 }
 // 检测队列是否为空 
 bool QueueEmpty(Queue* q)
 {
 	assert(q);
-	return q->_front==NULL;
+	return q->_front==NULL && q->_rear ;
 }
 // 销毁队列 
 void QueueDestroy(Queue* q)
@@ -98,4 +110,5 @@ void QueueDestroy(Queue* q)
 		cur = next;
 	}
 	q->_front = q->_rear = NULL;
+	q->size =0;
 }
